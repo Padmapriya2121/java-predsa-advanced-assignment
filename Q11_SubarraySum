@@ -1,0 +1,19 @@
+public class Q11_SubarraySum {
+    static String subarrayExists(int[] arr, int target) {
+        int start = 0, sum = 0;
+        for (int end = 0; end < arr.length; end++) {
+            sum += arr[end];
+            while (sum > target && start < end) {
+                sum -= arr[start];
+                start++;
+            }
+            if (sum == target) return "Yes";
+        }
+        return "No";
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1, 4, 20, 3, 10, 5};
+        System.out.println(subarrayExists(arr, 33));
+    }
+}
